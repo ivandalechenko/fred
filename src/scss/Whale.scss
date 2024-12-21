@@ -1,0 +1,13 @@
+.Whale {
+    z-index: 3;
+
+    img {
+        opacity: .2;
+        transition: opacity 300ms;
+
+        &:hover {
+            cursor: pointer;
+            opacity: 1;
+        }
+    }
+}

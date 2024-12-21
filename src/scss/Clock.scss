@@ -1,0 +1,13 @@
+.Clock {
+    z-index: 3;
+
+    img {
+        transition: transform 300ms, filter 300ms;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+            filter: drop-shadow(0px 0px 20px #0004);
+        }
+    }
+}

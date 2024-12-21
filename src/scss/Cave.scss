@@ -1,0 +1,16 @@
+.Cave {
+    z-index: 2;
+
+    &_inner {
+        img {
+            opacity: 0;
+            transition: opacity 500ms;
+
+            &:hover {
+                cursor: pointer;
+                opacity: 1;
+                transition: opacity 1s;
+            }
+        }
+    }
+}

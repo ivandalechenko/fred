@@ -1,0 +1,13 @@
+.MountTrace {
+    z-index: 3;
+
+    img {
+        cursor: pointer;
+        transition: opacity 500ms;
+        opacity: .2;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

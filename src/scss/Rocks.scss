@@ -1,0 +1,16 @@
+.Rocks {
+    z-index: 3;
+
+    &_right {
+        img {
+            transform: translate(-20dvh, 0px);
+            transition: transform 1s ease-in-out;
+
+            &:hover {
+                transform: translate(0dvh, 0px);
+                cursor: pointer;
+                transition: transform 1s ease-in-out;
+            }
+        }
+    }
+}

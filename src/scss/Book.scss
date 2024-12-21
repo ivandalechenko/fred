@@ -1,0 +1,13 @@
+.Book {
+    z-index: 3;
+
+    img {
+        transition: transform 200ms;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.4);
+            transition: transform 1s;
+        }
+    }
+}

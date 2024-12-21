@@ -1,0 +1,14 @@
+.Flag {
+    z-index: 3;
+
+    img {
+        transform-origin: left bottom;
+        transition: transform 1s;
+
+        &:hover {
+            transition: transform 1s;
+            transform: rotate(-20deg);
+            cursor: pointer;
+        }
+    }
+}

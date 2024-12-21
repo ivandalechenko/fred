@@ -1,0 +1,37 @@
+.Sky {
+    position: fixed;
+    width: 100% !important;
+    justify-content: center !important;
+    align-items: center;
+    bottom: 0px;
+
+    img {
+        object-fit: contain;
+        min-width: 170vw;
+        transition: transform 200ms ease-out;
+
+        @media (min-height: 50vw) {
+            min-width: 170vw;
+        }
+
+        @media (min-height: 75vw) {
+            min-width: 200vw;
+        }
+
+        @media (min-height: 100vw) {
+            min-width: 350vw;
+        }
+
+        @media (min-height: 150vw) {
+            min-width: 400vw;
+        }
+
+        @media (min-height: 200vw) {
+            min-width: 475vw;
+        }
+
+        @media (min-height: 250vw) {
+            min-width: 550vw;
+        }
+    }
+}

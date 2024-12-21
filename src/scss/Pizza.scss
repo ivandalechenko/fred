@@ -1,0 +1,28 @@
+.Pizza {
+    z-index: 3;
+
+    img {
+        transition: transform 1s;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.4);
+        }
+    }
+
+    &_text {
+
+        &_inner {
+            pointer-events: none;
+            background: #fff;
+            min-width: 30dvh;
+            min-height: 2dvh;
+            font-size: 2dvh;
+            color: #000;
+            padding: 1dvh;
+            border-radius: 1dvh;
+            box-shadow: .5dvh .5dvh 1dvh #0004;
+            transition: opacity 500ms;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.Chest {
+    z-index: 3;
+
+    img {
+        transition: transform 1s;
+
+        &:hover {
+            cursor: pointer;
+            transition: transform 1s;
+            transform: scale(1.3);
+        }
+    }
+}

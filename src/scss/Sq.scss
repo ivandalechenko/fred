@@ -1,0 +1,15 @@
+.Sq {
+    z-index: 2;
+
+    &_sq {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &_coin {
+        img {
+            min-width: 3dvh;
+        }
+    }
+}

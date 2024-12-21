@@ -1,0 +1,15 @@
+.Trash {
+    z-index: 2;
+
+    &_trash {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &_coin {
+        img {
+            width: 15dvh;
+        }
+    }
+}

@@ -1,0 +1,67 @@
+.Trends {
+    z-index: 2;
+
+    &_bull {
+        transform-origin: 20dvh 10dvh;
+        animation: flicker 3s infinite;
+
+        &:hover {
+            transform: rotate(10deg);
+        }
+    }
+
+    &_bear {
+        transform-origin: -20dvh 10dvh;
+        animation: flicker 4s infinite;
+
+        &:hover {
+            transform: rotate(10deg);
+        }
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    20% {
+        opacity: 0.6;
+    }
+
+    30% {
+        opacity: 0.9;
+    }
+
+    40% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    60% {
+        opacity: 0.85;
+    }
+
+    70% {
+        opacity: 0.65;
+    }
+
+    80% {
+        opacity: 0.9;
+    }
+
+    90% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

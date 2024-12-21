@@ -1,0 +1,20 @@
+.SatoshiShadow {
+    z-index: 3;
+
+    .free_img {
+        align-items: start;
+    }
+
+    img {
+        transition: transform 500ms, opacity 500ms;
+        opacity: .4;
+        cursor: pointer;
+        transform: translateY(5dvh);
+
+        &:hover {
+            opacity: 1;
+            transform: scale(2);
+        }
+
+    }
+}
