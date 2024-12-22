@@ -42,11 +42,22 @@ export default () => {
             scrollStore.fredMoveInt = null
         }
     }, [scrollStore.fredMove])
+
+    // const numbers = 
     return (
-        <div className='Fred free_img'>
-            <img src={`/img/fred/fred_anim${fredState}.svg`} alt="" style={{
-                transform: `scaleX(${1 * fredDirToFront ? 1 : -1})`
-            }} />
-        </div>
+        <>
+            {Array.from({ length: 8 }, (_, index) => (
+                <div className="Fred free_img" key={index}>
+                    <img
+                        src={`/img/fred/fred_anim${index}.svg`}
+                        alt=""
+                        style={{
+                            transform: `scaleX(${fredDirToFront ? 1 : -1})`,
+                            opacity: fredState === index ? 1 : 0
+                        }}
+                    />
+                </div>
+            ))}
+        </>
     )
 }
