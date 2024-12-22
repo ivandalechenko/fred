@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import './scss/Trash.scss';
 import scrollStore from './scrollStore';
+import musicStore from './musicStore';
 export default () => {
     const [coins, setCoins] = useState([]);
 
     const addCoin = () => {
+        musicStore.piu()
+
         const id = Math.random().toString(36).substr(2, 9); // Уникальный ID
         const direction = Math.random() * 360; // Случайное направление
         const velocity = 3; // Начальная скорость

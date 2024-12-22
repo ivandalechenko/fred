@@ -1,3 +1,4 @@
+import musicStore from './musicStore';
 import scrollStore from './scrollStore';
 import './scss/Flower.scss';
 export default () => {
@@ -12,7 +13,9 @@ export default () => {
                     alt=""
                     style={{
                         height: `16dvh`,
-                    }}
+                        cursor: 'pointer'
+                    }} onClick={() => { musicStore.piu() }}
+
                 />
             </div>
         </div>

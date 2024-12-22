@@ -1,3 +1,4 @@
+import musicStore from './musicStore';
 import scrollStore from './scrollStore';
 import './scss/Whale.scss';
 export default () => {
@@ -13,6 +14,8 @@ export default () => {
                     style={{
                         height: `20dvh`,
                     }}
+                    onClick={() => { musicStore.piu() }}
+
                 />
             </div>
         </div>

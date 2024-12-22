@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import scrollStore from './scrollStore';
 import './scss/Cafe.scss';
+import musicStore from './musicStore';
 export default () => {
     const [isHovered, setIsHovered] = useState(false);
 
@@ -18,6 +19,8 @@ export default () => {
                     }}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
+                    onClick={() => { musicStore.piu() }}
+
                 />
             </div>
             <div className='Cafe_text free_img' style={{
@@ -27,7 +30,7 @@ export default () => {
                 <div className='Cafe_text_inner' style={{
                     opacity: isHovered ? 1 : 0
                 }}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, fuga. Minus doloremque quas itaque dolores saepe nam vel quasi dolorem.
+                    Mt. Gox, one of the first and largest crypto exchanges, went bankrupt in 2014 after losing about 850,000 bitcoins due to a hacking attack and management failures.
                 </div>
             </div>
         </div >

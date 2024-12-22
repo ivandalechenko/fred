@@ -1,3 +1,4 @@
+import musicStore from './musicStore';
 import scrollStore from './scrollStore';
 import './scss/Trends.scss';
 export default () => {
@@ -11,8 +12,10 @@ export default () => {
                     src="/img/bull.png"
                     alt=""
                     style={{
+                        cursor: 'pointer',
                         height: `26.5dvh`,
                     }}
+                    onClick={() => { musicStore.piu() }}
                 />
             </div>
             <div className='Trends_bear free_img' style={{
@@ -23,9 +26,11 @@ export default () => {
                     src="/img/bear.png"
                     alt=""
                     style={{
+                        cursor: 'pointer',
                         height: `26.5dvh`,
                         transform: `scaleX(-1)`
                     }}
+                    onClick={() => { musicStore.piu() }}
                 />
             </div>
         </div >

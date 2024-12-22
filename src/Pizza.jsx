@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './scss/Pizza.scss';
 import scrollStore from './scrollStore';
+import musicStore from './musicStore';
 export default () => {
     const [isHovered, setIsHovered] = useState(false);
 
@@ -18,6 +19,8 @@ export default () => {
                     }}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
+                    onClick={() => { musicStore.piu() }}
+
                 />
             </div>
             <div className='Pizza_text free_img' style={{
@@ -27,7 +30,7 @@ export default () => {
                 <div className='Pizza_text_inner' style={{
                     opacity: isHovered ? 1 : 0
                 }}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, fuga. Minus doloremque quas itaque dolores saepe nam vel quasi dolorem.
+                    The first Bitcoin purchase was in 2010 when 10,000 BTC were used to buy two pizzas.
                 </div>
             </div>
         </div >

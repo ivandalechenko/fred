@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import scrollStore from './scrollStore';
 import './scss/Hotel.scss';
+import musicStore from './musicStore';
 export default () => {
 
     const [isHovered, setisHovered] = useState(false);
@@ -18,7 +19,8 @@ export default () => {
                         height: `16dvh`,
                     }}
                     onMouseEnter={() => setisHovered(true)}
-                    onMouseLeave={() => setisHovered(false)}
+                    onMouseLeave={() => setisHovered(false)} onClick={() => { musicStore.piu() }}
+
                 />
             </div>
         </div>

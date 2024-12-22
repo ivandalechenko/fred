@@ -9,12 +9,39 @@
     &_gde {
         position: fixed;
         top: 20px;
-        left: 20px;
+        right: 20px;
         z-index: 2;
         font-weight: 900;
         font-size: 5dvh;
         color: #fff;
         text-shadow: 0px 0px 10px #000;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        // width: 100vw;
+        column-gap: 1vh;
+
+        &_el {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 5vh;
+            height: 5vh;
+            // border: .2vh solid white;
+            border-radius: 1vh;
+            cursor: pointer;
+            transition: rotate 200ms;
+
+            &:hover {
+                rotate: 5deg;
+            }
+
+            img {
+                width: 3vh;
+                height: 3vh;
+                filter: drop-shadow(0px 0px 10px #000);
+            }
+        }
     }
 
 

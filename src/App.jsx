@@ -30,6 +30,8 @@ import Bird from "./Bird.jsx";
 import Bees from "./Bees.jsx";
 import Whale from "./Whale.jsx";
 import Trash from "./Trash.jsx";
+import Tables from "./Tables.jsx";
+import musicStore from "./musicStore.js";
 
 
 
@@ -41,45 +43,115 @@ const sceneAspectRatio = imgW / imgH
 
 function App() {
   const [sceneW, setsceneW] = useState(0);
+  const [isTouchMode, setIsTouchMode] = useState(window.innerWidth < 800);
+  const touchStartX = useRef(0);
+  const touchCurrentX = useRef(0);
 
   const handleScroll = () => {
-    const position = window.scrollY;
-    scrollStore.setScrollPosition(position);
+    if (!isTouchMode) {
+      const position = window.scrollY;
+      scrollStore.setScrollPosition(position);
+    }
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchCurrentX.current = e.touches[0].clientX; // Сохраняем начальную позицию
+  };
+
+  const handleTouchMove = (e) => {
+    const newTouchX = e.touches[0].clientX; // Текущая позиция пальца
+    const delta = newTouchX - touchCurrentX.current; // Разница с предыдущей позицией
+    scrollStore.changeScrollPosition(-delta); // Передаем delta
+    touchCurrentX.current = newTouchX; // Обновляем текущую позицию
+  };
+
+  const handleTouchEnd = () => {
+    // После окончания жеста обнуляем значения
+    touchStartX.current = 0;
+    touchCurrentX.current = 0;
+  };
+
+  const gameInit = () => {
+    const sceneW = window.innerHeight * sceneAspectRatio - document.documentElement.clientWidth + window.innerHeight;
+    setsceneW(sceneW);
+    scrollStore.setSceneW(sceneW - window.innerHeight);
+    scrollStore.setSceneWRaw(window.innerHeight * sceneAspectRatio);
+    scrollStore.setScreenPercentOfScene(((document.documentElement.clientWidth / scrollStore.sceneWRaw) * 100));
+    setIsTouchMode(window.innerWidth < 800); // Переключение режима
   };
 
   useEffect(() => {
-    gameInit()
-    window.addEventListener("scroll", handleScroll);
+    gameInit();
+
+    if (isTouchMode) {
+      window.addEventListener("touchstart", handleTouchStart);
+      window.addEventListener("touchmove", handleTouchMove);
+      window.addEventListener("touchend", handleTouchEnd);
+    } else {
+      window.addEventListener("scroll", handleScroll);
+    }
+
     window.addEventListener("resize", gameInit);
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", gameInit);
+      if (isTouchMode) {
+        window.removeEventListener("touchstart", handleTouchStart);
+        window.removeEventListener("touchmove", handleTouchMove);
+        window.removeEventListener("touchend", handleTouchEnd);
+      } else {
+        window.removeEventListener("scroll", handleScroll);
+      }
     };
-  }, []);
+  }, [isTouchMode]);
 
+  const [volume, setvolume] = useState(true);
+  useEffect(() => {
+    if (!volume) {
+      audioBgRef.current.volume = 0
+      audioClickRef.current.volume = 0
+    } else {
+      audioBgRef.current.volume = 1
+      audioClickRef.current.volume = 1
+    }
+  }, [volume])
 
-  const gameInit = () => {
+  useEffect(() => {
+    if (musicStore.play) {
+      audioClickRef.current.currentTime = 0; // Перемещаемся к началу
+      audioClickRef.current.play()
+    }
+  }, [musicStore.play])
 
-    const sceneW = window.innerHeight * sceneAspectRatio - document.documentElement.clientWidth + window.innerHeight
-    setsceneW(sceneW)
-    scrollStore.setSceneW(sceneW - window.innerHeight)
-    scrollStore.setSceneWRaw(window.innerHeight * sceneAspectRatio)
-    scrollStore.setScreenPercentOfScene(((document.documentElement.clientWidth / scrollStore.sceneWRaw) * 100))
-  }
-
-
-
+  const audioBgRef = useRef(null);
+  const audioClickRef = useRef(null);
   return (
     <div className='App' style={{
       height: `${sceneW}px`
+    }} onClick={() => {
+      audioBgRef.current.play()
     }}>
-      <div className='App_wrapper'>
 
-      </div>
+      <audio ref={audioBgRef} src="/music/bg.mp3" loop />
+      <audio ref={audioClickRef} src="/music/click.mp3" />
+
+
       <div className="App_gde">
-        {(scrollStore.POS + scrollStore.screenPercentOfScene).toFixed(2)}%
-        {scrollStore.POS.toFixed(2)}%
-
+        {/* {(scrollStore.POS + scrollStore.screenPercentOfScene).toFixed(2)}% */}
+        {/* {scrollStore.POS.toFixed(2)}% */}
+        <a href="https://t.me/fredportala" target="_blank" className='App_gde_el'>
+          <img src="/img/tg.svg" alt="" />
+        </a>
+        <a href="https://x.com/fred_cto_sol" target="_blank" className='App_gde_el'>
+          <img src="/img/x.svg" alt="" />
+        </a>
+        <a href="https://dexscreener.com/solana/8sqndszijlrlnxmfqbpzxbbhsujrjur7cefqcqzqz1hq" target="_blank" className='App_gde_el'>
+          <img src="/img/dex.svg" alt="" />
+        </a>
+        <div className='App_gde_el' onClick={() => { setvolume(!volume) }}>
+          <img src={`/img/music${volume ? 'On' : 'Off'}.svg`} alt="" />
+        </div>
       </div>
       <div className='App_content'>
         <LoadImages></LoadImages>
@@ -135,6 +207,8 @@ function App() {
         {(scrollStore.POS + scrollStore.screenPercentOfScene) >= 82.5 && scrollStore.POS <= 86.5 && <Whale />}
         {/* <Trash /> */}
         {(scrollStore.POS + scrollStore.screenPercentOfScene) >= 87.2 && scrollStore.POS <= 88.8 && <Trash />}
+
+        {(scrollStore.POS + scrollStore.screenPercentOfScene) >= 50 && scrollStore.POS <= 62 && <Tables />}
 
 
 

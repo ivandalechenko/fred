@@ -1,3 +1,4 @@
+import musicStore from './musicStore';
 import scrollStore from './scrollStore';
 import './scss/Rocks.scss';
 export default () => {
@@ -16,7 +17,8 @@ export default () => {
                     alt=""
                     style={{
                         height: `10dvh`,
-                    }}
+                    }} onClick={() => { musicStore.piu() }}
+
                 />
             </div>
             <div className='Rocks_right free_img' style={{
@@ -28,7 +30,8 @@ export default () => {
                     alt=""
                     style={{
                         height: `10dvh`,
-                    }}
+                    }} onClick={() => { musicStore.piu() }}
+
                 />
             </div>
         </div>

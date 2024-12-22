@@ -23,8 +23,12 @@ class ScrollStore {
         this.pos = position;
         this.percent = position / this.sceneW * 100
         this.POS = (this.percent - this.screenPercentOfScene * (this.percent / 100))
-
     }
+
+    changeScrollPosition(delta) {
+        this.setScrollPosition(Math.min(Math.max(this.pos + delta, 0), this.sceneW))
+    }
+
     setSceneW(sceneW) {
         this.sceneW = sceneW;
     }

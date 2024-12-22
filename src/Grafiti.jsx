@@ -1,3 +1,4 @@
+import musicStore from './musicStore';
 import scrollStore from './scrollStore';
 import './scss/Grafiti.scss';
 export default () => {
@@ -13,6 +14,8 @@ export default () => {
                     style={{
                         height: `12dvh`,
                     }}
+                    onClick={() => { musicStore.piu() }}
+
                 />
             </div>
         </div>

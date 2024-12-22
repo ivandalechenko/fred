@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './scss/Acorn.scss';
 import scrollStore from './scrollStore';
+import musicStore from './musicStore';
 export default () => {
     const [acornState, setacornState] = useState(1);
     const [rotate, setrotate] = useState(false);
@@ -9,6 +10,7 @@ export default () => {
         <div className='Acorn free_img'>
             <img src={`/img/acorn${acornState + 1}.png`} alt="" onClick={() => {
                 setrotate(!rotate)
+                musicStore.piu()
                 setTimeout(() => {
                     setacornState(prev => (prev + 1) % 4)
                 }, 200);

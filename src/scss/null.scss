@@ -141,3 +141,28 @@ html {
 body::-webkit-scrollbar {
     display: none;
 }
+
+
+body {
+
+    // scrollbar-width: none;
+}
+
+
+#root {
+    @media(max-width: 800px) {
+        height: calc(100dvh + 1px);
+        overflow: hidden;
+    }
+}
+
+img {
+    -webkit-tap-highlight-color: transparent;
+    /* Убираем выделение на iOS */
+    -webkit-user-select: none;
+    /* Запрещаем выделение текста/изображения */
+    user-select: none;
+    /* Универсально для всех браузеров */
+    outline: none;
+    /* Убираем рамку фокуса */
+}

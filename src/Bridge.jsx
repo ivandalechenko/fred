@@ -1,3 +1,4 @@
+import musicStore from './musicStore';
 import scrollStore from './scrollStore';
 import './scss/Bridge.scss';
 export default () => {
@@ -12,7 +13,8 @@ export default () => {
                     alt=""
                     style={{
                         height: `10dvh`,
-                    }}
+                    }} onClick={() => { musicStore.piu() }}
+
                 />
             </div>
         </div>

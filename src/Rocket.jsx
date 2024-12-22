@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import scrollStore from './scrollStore';
 import './scss/Rocket.scss';
+import musicStore from './musicStore';
 export default () => {
 
     const [rocketState, setrocketState] = useState(0);
@@ -36,8 +37,11 @@ export default () => {
                     src={`/img/rocket${rocketState + 1}.png`}
                     alt=""
                     style={{
+                        cursor: 'pointer',
                         height: `50dvh`,
                     }}
+                    onClick={() => { musicStore.piu() }}
+
                 />
             </div>
         </div>

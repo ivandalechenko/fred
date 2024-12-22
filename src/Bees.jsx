@@ -1,3 +1,4 @@
+import musicStore from './musicStore';
 import scrollStore from './scrollStore';
 import './scss/Bees.scss';
 export default () => {
@@ -12,8 +13,11 @@ export default () => {
                     alt=""
                     style={{
                         height: `10dvh`,
-                        transform: 'scaleX(-1)'
+                        transform: 'scaleX(-1)',
+                        cursor: 'pointer'
                     }}
+                    onClick={() => { musicStore.piu() }}
+
                 />
             </div>
         </div>
