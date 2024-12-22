@@ -3,7 +3,7 @@ import './scss/Acorn.scss';
 import scrollStore from './scrollStore';
 import musicStore from './musicStore';
 export default () => {
-    const [acornState, setacornState] = useState(1);
+    const [acornState, setacornState] = useState(0);
     const [rotate, setrotate] = useState(false);
 
     return (

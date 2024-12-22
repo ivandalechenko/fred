@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import scrollStore from './scrollStore';
 import './scss/Sq.scss';
 import musicStore from './musicStore';
@@ -7,7 +7,6 @@ export default () => {
     const [coins, setCoins] = useState([]);
 
     const addCoin = () => {
-        musicStore.piu()
 
         const id = Math.random().toString(36).substr(2, 9); // Уникальный ID
         const direction = Math.random() * 360; // Случайное направление
@@ -46,6 +45,18 @@ export default () => {
         }, 2000);
     };
 
+    let autocoinInt
+
+    useEffect(() => {
+        addCoin()
+        autocoinInt = setInterval(() => {
+            addCoin()
+        }, 4000);
+        return () => {
+            clearInterval(autocoinInt)
+        }
+    }, [])
+
     return (
         <div className='Sq free_img'>
             <img
@@ -57,7 +68,10 @@ export default () => {
                     transition: `transform 200ms ease-out`,
                     height: `11.5vh`,
                 }}
-                onClick={addCoin}
+                onClick={() => {
+                    musicStore.piu()
+                    addCoin()
+                }}
             />
             <div
                 className='Sq_coins free_img'
